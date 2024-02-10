@@ -1038,6 +1038,9 @@ select {
 .overflow-y-hidden {
   overflow-y: hidden;
 }
+.break-all {
+  word-break: break-all;
+}
 .rounded {
   border-radius: 0.25rem;
 }
