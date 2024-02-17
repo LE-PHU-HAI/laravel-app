@@ -19,10 +19,12 @@ class CreateRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
+    public function rules()
     {
         return [
-            'tweet' => 'required|max:140'
+            'tweet' => 'required|max:140',
+            'images' => 'array|max:4',
+            'images.*' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ];
     }
     public function tweet(): string
@@ -34,5 +36,9 @@ class CreateRequest extends FormRequest
     public function userId(): int
     {
         return $this->user()->id;
+    }
+    public function images(): array
+    {
+        return $this->file('images', []);
     }
 }
